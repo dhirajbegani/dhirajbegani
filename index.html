@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Dhiraj Begani">
+    <meta name="description" content="Dhiraj Begani's professional portfolio.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dhiraj Begani | Senior Software Engineer</title>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.png">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- AOS Library for scroll animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-image: url('pics/dark_background.jpeg');
+            --bg-color: #121212;
+            --text-color: #e0e0e0;
+            --heading-color: #ffffff;
+            --subheading-color: #bdbdbd;
+            --section-bg: rgba(0, 0, 0, 0.6);
+            --section-border: rgba(255, 255, 255, 0.18);
+            --skill-tag-bg: rgba(255, 255, 255, 0.2);
+            --skill-tag-color: #ffffff;
+            --btn-bg: #37474f;
+            --btn-color: #81d4fa;
+            --btn-hover-bg: #455a64;
+            --social-icon-color: #81d4fa;
+            --social-icon-hover: #4fc3f7;
+            --footer-bg: rgba(0, 0, 0, 0.8);
+            --footer-color: #fff;
+            --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif;
+            --accent-color: #4fc3f7;
+            --secondary-color: #9e9e9e;
+            --link-color: #81d4fa;
+            --title-color: #a0a0a0; /* New variable for job titles and degree */
+        }
+
+        @media (prefers-color-scheme: light) {
+            :root {
+                --bg-image: url('pics/light_background.jpg');
+                --bg-color: #f0f8ff;
+                --text-color: #333333;
+                --heading-color: #1d1d1f;
+                --subheading-color: #616161;
+                --section-bg: rgba(255, 255, 255, 0.9);
+                --section-border: rgba(0, 0, 0, 0.1);
+                --skill-tag-bg: rgba(2, 119, 189, 0.1);
+                --skill-tag-color: #000000;
+                --btn-bg: #0277bd;
+                --btn-color: #ffffff;
+                --btn-hover-bg: #01579b;
+                --social-icon-color: #000000;
+                --social-icon-hover: #0277bd;
+                --footer-bg: rgba(2, 119, 189, 0.1);
+                --footer-color: #000000;
+                --section-title-color: #1d1d1f;
+                --accent-color: #0277bd;
+                --secondary-color: #757575;
+                --link-color: #01579b;
+                --title-color: #4a4a4a; /* Darker shade for light mode */
+            }
+        }
+
+        body, html {
+            font-family: var(--font-family);
+            font-weight: 400;
+            color: var(--text-color);
+            line-height: 1.8;
+            background-color: var(--bg-color);
+            background-image: var(--bg-image);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            overflow-x: hidden;
+        }
+
+        .bg-image, .bg-image-low-res {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transition: opacity 2s ease-in-out, filter 1s ease-in-out;
+            z-index: -1;
+        }
+
+        .bg-image {
+            opacity: 0;
+        }
+
+        .bg-image-low-res {
+            z-index: -2;
+        }
+
+        @media (max-width: 768px) {
+            .bg-image.mobile-blur, .bg-image-low-res.mobile-blur {
+                filter: blur(5px);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 15px;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: var(--heading-color);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #fff;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            color: var(--title-color);
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+            color: var(--secondary-color);
+            font-weight: 400;
+            margin-bottom: 0.25rem;
+        }
+
+        p, li {
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.8;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .section {
+            background-color: var(--section-bg);
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--section-border);
+            padding: 3rem;
+            margin-bottom: 4rem;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            transform: rotate(30deg);
+            pointer-events: none;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 48px rgba(31, 38, 135, 0.25);
+        }
+
+        #profile-pic {
+            border-radius: 50%;
+            max-width: 250px;
+            margin-bottom: 30px;
+            box-shadow: 0 0 20px rgba(0, 112, 201, 0.5);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        #profile-pic:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-tag {
+            background-color: var(--skill-tag-bg);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            display: inline-block;
+            margin: 5px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+            -webkit-backdrop-filter: blur(5px);
+            border: 1px solid var(--accent-color);
+        }
+
+        .skill-tag:hover {
+            background-color: var(--accent-color);
+            color: var(--bg-color);
+            transform: translateY(-2px);
+        }
+
+        .timeline {
+            font-size: 0.9rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--social-icon-color);
+            font-size: 1.8rem;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--social-icon-hover);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--footer-color);
+            padding: 20px 0;
+            margin-top: 50px;
+        }
+
+        .parallax {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #hero {
+            background-color: transparent;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: var(--heading-color);
+        }
+
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+            color: #ffffff; /* Change this to white */
+        }
+
+        .hero-content h1::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(ellipse at center, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+            z-index: -1;
+            opacity: 0;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        .hero-content p {
+            font-size: 1.75rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+            font-weight: 400;
+            color: var(--heading-color);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--link-color);
+            transform: translateY(-2px);
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        li::before {
+            content: '–';
+            position: absolute;
+            left: 0;
+            color: #86868b;  /* Apple's typical color for list item markers */
+            font-size: 1em;
+            line-height: 1.5;
+        }
+
+        /* Add this new style for section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .section-header h2 {
+            margin: 0;
+            flex-grow: 1;
+            color: var(--accent-color); /* Change this to use accent color */
+        }
+
+        .section-header::after {
+            content: '';
+            height: 1px;
+            background: linear-gradient(to right, var(--secondary-color), transparent);
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+
+        /* Add new styles for improved spacing and animations */
+        .section > * + * {
+            margin-top: 2rem;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Add this new style for better contrast in dark mode */
+        @media (prefers-color-scheme: dark) {
+            .section {
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+        }
+
+        a {
+            color: var(--link-color);
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        #profile-pic::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(ellipse at center, rgba(0, 112, 201, 0.3) 0%, rgba(0, 112, 201, 0) 70%);
+            border-radius: 50%;
+            z-index: -1;
+            animation: profilePulse 2s infinite;
+        }
+
+        @keyframes profilePulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        .hidden-experience {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease-out;
+        }
+
+        .hidden-experience.expanded {
+            max-height: 2000px; /* Adjust this value based on your content */
+            transition: max-height 1s ease-in;
+        }
+
+        .partial-experience::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to bottom, rgba(18, 18, 18, 0), var(--bg-color));
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .partial-experience.expanded::after {
+            opacity: 0;
+        }
+
+        #expand-experience {
+            transition: all 0.3s ease;
+        }
+
+        #expand-experience.expanded .fa-chevron-down {
+            transform: rotate(180deg);
+        }
+
+        .expand-link {
+            color: var(--secondary-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .expand-link:hover {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .expand-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .expand-link.expanded i {
+            transform: rotate(180deg);
+        }
+
+        /* Add this new style for job entries */
+        .job-entry {
+            margin-bottom: 2.5rem;
+            padding-bottom: 2.5rem;
+            border-bottom: 1px solid var(--section-border);
+        }
+
+        /* Style for the last job entry to remove the border */
+        .job-entry:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+
+    <!-- Hero Section -->
+    <section id="hero" class="parallax">
+        <div class="hero-content">
+            <h1 data-aos="fade-down">Dhiraj Begani</h1>
+            <p data-aos="fade-up">Software Engineer • Innovator • Problem Solver</p>
+            <a href="#profile" class="btn btn-primary" data-aos="zoom-in">Learn More</a>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Profile Section -->
+        <section class="section" id="profile" data-aos="fade-up">
+            <div class="section-header">
+                <h2 data-aos="fade-left">About Me</h2>
+            </div>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="pics/profile.jpg" alt="Dhiraj Begani" id="profile-pic" class="img-fluid" data-aos="zoom-in">
+                </div>
+                <div class="col-md-8">
+                    <p data-aos="fade-left" data-aos-delay="100">Experienced software engineer with a strong commitment to crafting clean, well-designed, and unit-tested code. Proven track record of innovation and technical leadership.</p>
+                    <div class="social-icons" data-aos="fade-up" data-aos-delay="200">
+                        <a href="http://www.github.com/dhirajbegani" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/dhiraj-begani-565ab8112/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <!-- <a href="https://www.youtube.com/channel/UCS3X-xdL0iS0hdHHShrMifw?view_as=subscriber" target="_blank"><i class="fab fa-youtube"></i></a> -->
+                        <!-- <a href="https://twitter.com/dhiraj4444" target="_blank"><i class="fab fa-twitter"></i></a> -->
+                        <a href="https://www.instagram.com/beganidhiraj/" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="mailto:beganidhiraj@gmail.com" target="_blank"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Certifications Section -->
+        <section class="section" id="certifications" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Technical Certifications</h2>
+            </div>
+            <ul>
+                <li data-aos="fade-left" data-aos-delay="100">UBS (Certified Engineer - Provided after 15 diverse exams and contribution across various streams)</li>
+                <li data-aos="fade-left" data-aos-delay="200">Amazon Web Services (Certified Developer Associate)</li>
+                <li data-aos="fade-left" data-aos-delay="300">Cloud Native Computing Foundation (Certified Kubernetes Application Developer)</li>
+                <li data-aos="fade-left" data-aos-delay="400">HashiCorp (Terraform Associate)</li>
+                <li data-aos="fade-left" data-aos-delay="500">Microsoft (Azure Fundamentals)</li>
+                <li data-aos="fade-left" data-aos-delay="600">Gitlab (Certified CI/CD Associate and Certified Git Associate)</li>
+            </ul>
+        </section>
+
+        <!-- Work Experience Section -->
+        <section class="section" id="experience" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Work Experience</h2>
+            </div>
+
+            <div id="experience-list">
+                <div class="job-entry" data-aos="fade-up" data-aos-delay="100">
+                    <h3>Associate Director</h3>
+                    <h4>UBS AG</h4>
+                    <p class="timeline">November 2022 - Present</p>
+                    <ul>
+                        <li>Leader of Technical Team developing risk monitoring solutions for UBS</li>
+                        <li>Building new product features, such as collateral shortfall remediation, forced liquidation</li>
+                        <li>Leveraging data from wealth management to proactively identify potential risks</li>
+                        <li>In UBS Hackathon, my prototype for a cloud-based data processing engine was highlighted as a featured project</li>
+                        <li>Leading Azure migration program for Risk monitoring</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry" data-aos="fade-up" data-aos-delay="200">
+                    <h3>Senior Software Engineer</h3>
+                    <h4>JPMC</h4>
+                    <p class="timeline">March 2020 - November 2022</p>
+                    <ul>
+                        <li>Developed a self-service interface which helps users to create dynamic structures, data and their mapping.</li>
+                        <li>It also simplfied efforts of report writing teams in numerous ways primarily for handling data complexities.</li>
+                    </ul>
+                </div>
+
+                <div class="job-entry" data-aos="fade-up" data-aos-delay="300">
+                    <h3>Senior Associate</h3>
+                    <h4>Cognizant Technology Solutions</h4>
+                    <p class="timeline">July 2018 - February 2020</p>
+                    <ul>
+                        <li>Designed and developed a Kubernetes-on-Router solution that leverages spare resources on a managed SD-WAN router to securely deploy and orchestrate containerised applications on the edge.</li>
+                        <li>Project Santa Cruz. VMworld Demo</li>
+                    </ul>
+                </div>
+
+                <div class="hidden-experience">
+                    <div class="job-entry partial-experience" data-aos="fade-up" data-aos-delay="400">
+                        <h3>Associate</h3>
+                        <h4>Cognizant Technology Solutions</h4>
+                        <p class="timeline">June 2013 – July 2018</p>
+                        <ul>
+                            <li>Worked on the development of new regulatory reporting platform.</li>
+                            <li>Handled Trades and settlement data which was received from strategic applications and created solution to deliver reports to regulators</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry" data-aos="fade-up" data-aos-delay="500">
+                        <h4>Cognizant Technology Solutions</h4>
+                        <h4>Programmer Analyst</h4>
+                        <p class="timeline">September 2012 – June 2013</p>
+                        <ul>
+                            <li>Developed Cash Standing Instruction Decision Engine features for FX Transactions.</li>
+                        </ul>
+                    </div>
+
+                    <div class="job-entry" data-aos="fade-up" data-aos-delay="600">
+                        <h3>Programmer Analyst Trainee</h3>
+                        <h4>Cognizant Technology Solutions</h4>
+                        <p class="timeline">September 2011 – September 2012</p>
+                        <ul>
+                            <li>Worked to develop an application which receives and processes the Asset servicing events messages.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="#" id="expand-experience" class="expand-link">
+                    <span>Show More</span>
+                    <i class="fas fa-chevron-down ml-1"></i>
+                </a>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section class="section" id="skills" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Skills</h2>
+            </div>
+            <div data-aos="fade-up" data-aos-delay="100">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">Spring Boot</span>
+                <span class="skill-tag">Spring cloud stream</span>
+                <span class="skill-tag">Kafka</span>
+                <span class="skill-tag">AWS, Azure</span>
+                <span class="skill-tag">REST API Development</span>
+            </div>
+        </section>
+
+        <!-- Technical Certifications 
+        <section class="section" id="technical-certifications" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Technical Certifications</h2>
+            </div>
+            <ul>
+                <li data-aos="fade-left" data-aos-delay="100">2nd Rank, National Level Debate Competition at Jamia Millia Islamia University, New Delhi (February 2016)</li>
+                <li data-aos="fade-left" data-aos-delay="150">1st Rank, Inter-Collegiate Debate Competition, Tirpude College of Management, Nagpur (February 2017)</li>
+                <li data-aos="fade-left" data-aos-delay="200">1st Rank, Inter-Collegiate Extempore Competition, Tirpude College of Management, Nagpur (February 2017)</li>
+                <li data-aos="fade-left" data-aos-delay="250">Best Speaker, Impromptu Speech at IBC Titans Toastmasters Club, Oracle Corporation, Bangalore (February 2019)</li>
+                <li data-aos="fade-left" data-aos-delay="300">3rd Rank, Impromptu Speech at Toastmasters Zonal Level Contest, IIM Bangalore (February 2019)</li>
+                <li data-aos="fade-left" data-aos-delay="350">3rd Rank, Vidharbha Level Elocution Competition, C.P. and Berar college, Nagpur (March 2017)</li>
+                <li data-aos="fade-left" data-aos-delay="400">1st Rank, Orator Of The Year, NSS unit, Ramdeobaba College of Engineering and Management, Nagpur (2015)</li>
+                <li data-aos="fade-left" data-aos-delay="450">1st Rank (Team of 5), Youth Parliament, Ramdeobaba College of Engineering and Management, Nagpur (2016)</li>
+                <li data-aos="fade-left" data-aos-delay="500">3rd Rank, Inter-College Debate & Extempore Competition, Government Institute of Forensic Sciences, Nagpur (January 2017)</li>
+                <li data-aos="fade-left" data-aos-delay="550">3rd Rank, University Level Inter-Collegiate Debate Competition, Dr. M.K. Umathe Arts, Science & Shri R.Mokhare Commerse College, Nagpur (January 2017)</li>
+                <li data-aos="fade-left" data-aos-delay="600">3rd Rank, Intra-College debate competition, Power Grid Corporation in association with Ramdeobaba College of Engineering and Management, Nagpur (October 2016)</li>
+            </ul>
+        </section> -->
+
+        <!-- Education Section -->
+        <section class="section" id="education" data-aos="fade-up">
+            <div class="section-header">
+                <h2>Education</h2>
+            </div>
+            <h3>Bachelor of Engineering in Computer Science</h3>
+            <h4>Walchand Institute of Technology, Solapur</h4>
+        </section>
+    </div>
+
+    <footer>
+        <div class="container text-center">
+            <p>&copy; 2025 Dhiraj Begani. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- AOS Library for scroll animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true,
+        });
+
+        // Smooth scrolling with custom easing
+        $(document).ready(function() {
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if( target.length ) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 800, function(progress) {
+                        return Math.pow(progress, 0.7);
+                    });
+                }
+            });
+        });
+
+        // Modify the existing handleThemeChange function
+        function handleThemeChange(mediaQuery) {
+            const bgImage = document.querySelector('.bg-image');
+            const bgImageLowRes = document.querySelector('.bg-image-low-res');
+
+            const darkImage = 'pics/dark_background.jpeg';
+            const lightImage = 'pics/light_background.jpg';
+
+            if (mediaQuery.matches) {
+                // Light mode
+                bgImageLowRes.style.backgroundImage = `url("${lightImage}")`;
+                loadHighResImage(bgImage, lightImage);
+            } else {
+                // Dark mode
+                bgImageLowRes.style.backgroundImage = `url("${darkImage}")`;
+                loadHighResImage(bgImage, darkImage);
+            }
+
+            // Apply blur on mobile
+            if (window.innerWidth <= 768) {
+                bgImage.classList.add('mobile-blur');
+                bgImageLowRes.classList.add('mobile-blur');
+            } else {
+                bgImage.classList.remove('mobile-blur');
+                bgImageLowRes.classList.remove('mobile-blur');
+            }
+        }
+
+        function loadHighResImage(imgElement, src) {
+            const img = new Image();
+            img.src = src;
+            img.onload = function() {
+                imgElement.style.backgroundImage = `url("${src}")`;
+                imgElement.style.opacity = '1';
+            };
+        }
+
+        // Add this new function to handle resize events
+        function handleResize() {
+            if (window.innerWidth <= 768) {
+                document.querySelector('.bg-image').classList.add('mobile-blur');
+                document.querySelector('.bg-image-low-res').classList.add('mobile-blur');
+            } else {
+                document.querySelector('.bg-image').classList.remove('mobile-blur');
+                document.querySelector('.bg-image-low-res').classList.remove('mobile-blur');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const bgImage = document.querySelector('.bg-image');
+            const bgImageLowRes = document.createElement('div');
+            bgImageLowRes.className = 'bg-image bg-image-low-res';
+            bgImage.parentNode.insertBefore(bgImageLowRes, bgImage);
+
+            const lightModeMediaQuery = window.matchMedia('(prefers-color-scheme: light)');
+            handleThemeChange(lightModeMediaQuery);
+            lightModeMediaQuery.addListener(handleThemeChange);
+
+            // Add event listener for window resize
+            window.addEventListener('resize', handleResize);
+            // Initial call to handleResize
+            handleResize();
+        });
+
+        // Add new script for fade-in animation
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', (event) => {
+            const expandLink = document.getElementById('expand-experience');
+            const hiddenExperience = document.querySelector('.hidden-experience');
+            const partialExperience = document.querySelector('.partial-experience');
+
+            expandLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                hiddenExperience.classList.toggle('expanded');
+                partialExperience.classList.toggle('expanded');
+
+                if (hiddenExperience.classList.contains('expanded')) {
+                    expandLink.querySelector('span').textContent = 'Show Less';
+                    expandLink.classList.add('expanded');
+                } else {
+                    expandLink.querySelector('span').textContent = 'Show More';
+                    expandLink.classList.remove('expanded');
+                    // Scroll to the start of the experience section
+                    document.getElementById('experience').scrollIntoView({behavior: 'smooth'});
+                }
+            });
+        });
+    </script>
+</body>
+</html>
