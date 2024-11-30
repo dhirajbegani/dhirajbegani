@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /private/
 Allow: /
-Sitemap: https://dhirajbegani.github.io/dhirajbegani/sitemap.xml
+Sitemap: https://github.com/dhirajbegani/dhirajbegani/blob/main/sitemap.xml
